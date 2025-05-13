@@ -1,0 +1,20 @@
+[package]
+name = "static-embed"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "static_embed"
+crate-type = ["cdylib"]
+
+[dependencies]
+candle = { version = "0.9.1", package = "candle-core" }
+thiserror = "2.0.12"
+tokenizers = "0.21.1"
+tracing = "0.1.39"
+tracing-subscriber = "0.3.1"
+anyhow = "1.0.79"
+safetensors = "0.5.3"
+ndarray = "0.16.1"
+reqwest = { version = "0.12.15", features = ["blocking"] }
+pyo3 = { version = "0.20", features = ["extension-module"] }

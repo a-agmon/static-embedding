@@ -1,0 +1,11 @@
+/target
+/models
+/.pycache
+/build
+/dist
+/venv
+/env
+/env.local
+/env.development.local
+/__pycache__
+/.pytest_cachemodels/static-retrieval-mrl-en-v1/model.safetensors
