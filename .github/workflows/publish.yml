@@ -35,4 +35,8 @@ jobs:
           args: --no-sdist --skip-existing
         env:
           # Set this secret in repository → Settings → Secrets → Actions
-          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }} 
+          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+          OPENSSL_DIR: /usr/lib/ssl
+          OPENSSL_INCLUDE_DIR: /usr/include
+          OPENSSL_LIB_DIR: /usr/lib/x86_64-linux-gnu
+          PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig 
