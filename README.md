@@ -93,4 +93,4 @@ maturin publish --skip-existing           # upload
 ---
 
 ## License
-MIT © Your Name 
+MIT © Alon Agmon 
