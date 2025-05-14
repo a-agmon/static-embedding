@@ -1,0 +1,34 @@
+name: Build and publish Python wheels
+
+on:
+  # Publish on version tags like v1.2.3. You can also trigger it manually via the Actions tab.
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+# Re-use the same job definition for each major platform.
+# Each job builds an abi3 wheel with maturin and immediately uploads it to PyPI.
+# The upload will be skipped if that specific wheel already exists thanks to --skip-existing.
+jobs:
+  publish:
+    name: Publish wheels ( ${{ matrix.os }} )
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # PyO3/maturin-action sets up Rust, Python and maturin for us.
+      - name: Build & upload wheel to PyPI
+        uses: PyO3/maturin-action@v1
+        with:
+          command: publish
+          # Build a release wheel, target the stable Python ABI (abi3) and skip wheels that already exist.
+          args: --release --no-sdist --skip-existing --compatibility abi3
+        env:
+          # Set this secret in repository → Settings → Secrets → Actions
+          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }} 

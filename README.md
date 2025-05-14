@@ -1,11 +1,11 @@
 # static_embed
 
-**static_embed** is an educational (but fully operatioal) library and and repository that shows how to use Static Embedding with Rust.
-Static sentence-embedding library written in Rust (Candle + tokenizers) and exported to Python via [PyO3](https://pyo3.rs/) and [maturin](https://github.com/PyO3/maturin).
+**static_embed** is an educational (but fully operatioal) library and and repository that shows how to use [Static Embedding](https://huggingface.co/blog/static-embeddings) with Rust. Its a library written in Rust (Candle + tokenizers) and exported to Python via [PyO3](https://pyo3.rs/) and [maturin](https://github.com/PyO3/maturin).
 
 ## Features
 
 * Pure-Rust embedding implementation (no Python runtime dependencies at inference time)
+* High performance embeddings
 * CPU-only, self-contained model weights (downloaded on first use)
 * Python bindings that expose an easy-to-use `Embedder` class
 
