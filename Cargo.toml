@@ -17,4 +17,7 @@ anyhow = "1.0.79"
 safetensors = "0.5.3"
 ndarray = "0.16.1"
 reqwest = { version = "0.12.15", features = ["blocking"] }
-pyo3 = { version = "0.20", features = ["extension-module"] }
+pyo3 = { version = "0.20", features = ["extension-module", "abi3-py38"] }
+
+[package.metadata.maturin]
+python-abi3 = true

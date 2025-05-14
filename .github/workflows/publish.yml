@@ -28,7 +28,7 @@ jobs:
         with:
           command: publish
           # Build a release wheel, target the stable Python ABI (abi3) and skip wheels that already exist.
-          args: --no-sdist --skip-existing --compatibility abi3
+          args: --no-sdist --skip-existing
         env:
           # Set this secret in repository → Settings → Secrets → Actions
           MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }} 
