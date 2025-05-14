@@ -11,20 +11,11 @@
 
 ---
 
-## Installation (for users)
+## Installation 
 
-### Prerequisites
-* Python ≥ 3.8  (CPython)
-* A Rust toolchain (stable) – install with `rustup`
-
-### Quick install into the current **virtual env**
 ```bash
-pip install maturin  # once
-# From the repository root
-maturin develop --release
+pip install static_embed
 ```
-This builds the Rust crate as a Python extension and installs it into the environment.
-
 ---
 
 ## Usage
@@ -47,25 +38,34 @@ print(len(embeddings), "embeddings", "dimension", len(embeddings[0]))
 
 ---
 
-## Development workflow
+## Benchmarking
 
-1. **Set up a virtual environment**
+To benchmark the embedding speed and resource usage, you can run the provided benchmark script. This script downloads a dataset, splits it into chunks, and measures embedding throughput and memory usage.
+
+**Dependencies:**
+- `datasets`
+- `tqdm`
+- `psutil`
+
+Install them with:
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install maturin pytest
+pip install datasets tqdm psutil
 ```
-2. **Build the extension in editable mode**
+
+**Run the benchmark:**
 ```bash
-maturin develop                      # or `--release` for optimised builds
+python python_files/benchmark.py
 ```
-3. **Run the Python example**
-```bash
-python python_example.py
+
+Example output:
 ```
-4. **Run the test-suite**
-```bash
-pytest -q
+Embedded 25,000 chunks in 1.54s → 16,205 chunks/sec
+CPU util.         : 24.1 %
+RAM used          : 16509 MB of 38655 MB
+Process RSS       : 3102 MB
 ```
+
+You can adjust the number of text chunks and batch size by editing the `TARGET_CHUNKS` and `BATCH_SIZE` variables at the top of the script.
 
 ---
 
@@ -83,14 +83,5 @@ pytest -q
 
 ---
 
-## Publishing to PyPI
-(Requires an API token in `$POETRY_PYPI_TOKEN_PYPI` or `~/.pypirc`)
-```bash
-maturin build --release --skip-auditwheel  # wheels in target/wheels/
-maturin publish --skip-existing           # upload
-```
-
----
-
 ## License
-MIT © Your Name 
+MIT © Alon Agmon 

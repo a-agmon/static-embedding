@@ -5,6 +5,7 @@
 /dist
 /venv
 /env
+/.venv
 /env.local
 /env.development.local
 /__pycache__
